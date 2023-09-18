@@ -6,6 +6,8 @@ import com.saucelab.utils.TestUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.remote.AutomationName;
 import org.openqa.selenium.WebElement;
@@ -49,7 +51,8 @@ public class BaseTest {
         switch (platformName) {
             case "Android":
                 UiAutomator2Options options = new UiAutomator2Options();
-                options.setPlatformName(AutomationName.ANDROID_UIAUTOMATOR2);
+                options.setPlatformName(platformName);
+                options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
                 options.setUdid(udid);
                 options.setDeviceName(deviceName);
                 if (emulator.equalsIgnoreCase("true")) {
@@ -64,6 +67,23 @@ public class BaseTest {
                     e.printStackTrace();
                 }
                 break;
+            case "iOS":
+                XCUITestOptions options1 = new XCUITestOptions();
+                options1.setPlatformName(platformName);
+                options1.setAutomationName(AutomationName.IOS_XCUI_TEST);
+                options1.setUdid(udid);
+                options1.setDeviceName(deviceName);
+                options1.setApp(propertyFileReader.getValue("iOSAppLocation"));
+
+                try{
+                    driver1=new IOSDriver(new URL(propertyFileReader.getValue("appiumURL")),options1);
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                throw new RuntimeException("Hey enter a proper value.The entered value is invalid"+platformName);
 
         }
         setDriver(driver1);
