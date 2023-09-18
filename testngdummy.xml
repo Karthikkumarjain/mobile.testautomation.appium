@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+    <test name="Pixel_7">
+
+        <parameter name="emulator" value="false" />
+        <parameter name="platformName" value="Android" />
+        <parameter name="udid" value="emulator-5554" />
+        <parameter name="deviceName" value="pixel_7" />
+        <parameter name="systemPort" value="10000" />
+        <parameter name="chromeDriverPort" value="11000" />
+        <classes>
+           <!-- <class name="com.saucelab.tests.LoginTest"/> -->
+            <class name="com.saucelab.tests.LoginTest"/>
+        </classes>
+    </test>
+</suite> <!-- Suite -->
