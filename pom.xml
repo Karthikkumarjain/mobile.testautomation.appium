@@ -72,6 +72,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>pCloudy-java-connector</groupId>
+            <artifactId>pCloudy-java-connector</artifactId>
+            <version>11.0.7</version>
+        </dependency>
 
     </dependencies>
     <build>
