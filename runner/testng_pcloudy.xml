@@ -5,7 +5,7 @@
             <listener class-name="com.mobileapp.listeners.TestListener" />
         </listeners>
         <parameter name="emulator" value="false" />
-        <parameter name="platformName" value="Android" />
+        <parameter name="platformName" value="pcloudy" />
         <parameter name="udid" value="emulator-5554" />
         <parameter name="deviceName" value="pixel_7" />
         <parameter name="systemPort" value="10000" />

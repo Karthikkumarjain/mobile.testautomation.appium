@@ -1,6 +1,6 @@
-package com.saucelab.pages;
+package com.mobileapp.pages;
 
-import com.saucelab.base.BaseTest;
+import com.mobileapp.base.BaseTest;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;

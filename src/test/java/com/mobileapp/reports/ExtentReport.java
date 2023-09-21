@@ -1,4 +1,4 @@
-package com.saucelab.reports;
+package com.mobileapp.reports;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;

@@ -1,10 +1,10 @@
-package com.saucelab.listeners;
+package com.mobileapp.listeners;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-import com.saucelab.base.BaseTest;
-import com.saucelab.reports.ExtentReport;
-import com.saucelab.utils.TestUtils;
+import com.mobileapp.base.BaseTest;
+import com.mobileapp.reports.ExtentReport;
+import com.mobileapp.utils.TestUtils;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;

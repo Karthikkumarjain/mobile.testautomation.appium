@@ -2,7 +2,7 @@
 <suite name="Suite" parallel="false">
     <test name="iPhone14ProMax">
         <listeners>
-            <listener class-name="com.saucelab.listeners.TestListener" />
+            <listener class-name="com.mobileapp.listeners.TestListener" />
         </listeners>
         <parameter name="platformName" value="iOS" />
         <parameter name="udid" value="98449E1B-3023-4EE8-A33E-3B2615D44756" />
@@ -10,7 +10,7 @@
         <parameter name="wdaLocalPort" value="10001" />
         <parameter name="webkitDebugProxyPort" value="11001" />
         <classes>
-            <class name="com.saucelab.tests.LoginTest"/>
+            <class name="com.mobileapp.tests.LoginTest"/>
         </classes>
     </test>
 </suite> <!-- -Dsurefire.suiteXmlFiles=pathOfxmlFile(to run in terminal with maven surefire plugin)-->

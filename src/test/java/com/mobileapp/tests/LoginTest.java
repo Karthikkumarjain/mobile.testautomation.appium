@@ -1,8 +1,8 @@
-package com.saucelab.tests;
+package com.mobileapp.tests;
 
-import com.saucelab.base.BaseTest;
-import com.saucelab.pages.HomePage;
-import com.saucelab.pages.LoginPage;
+import com.mobileapp.base.BaseTest;
+import com.mobileapp.pages.HomePage;
+import com.mobileapp.pages.LoginPage;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
