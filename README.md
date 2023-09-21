@@ -35,6 +35,7 @@ The application  under test are under the resources/app
 * appium : To add tests related to Android and iOS application.
 * jasypt : To encrypt and decrypt sensitive information.
 * assertj: To write tests with much effective assertions.
+* oracle jdbc: To connect to database.
 ## Config
 
 * globalconfig.properties - Is maintained as part of global level properties
