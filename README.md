@@ -1,4 +1,4 @@
-# Test Automation with appium for testing mobile devices
+# Test Automation with Appium for mobile devices
 
 This is a sample test framework for mobile testing of Android and iOS using appium. The tests and other classes are written in Java.The framework also supports parallel testing and running test cases over cloud based platform.
 
