@@ -8,6 +8,8 @@ import com.mobileapp.utils.TestUtils;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -23,13 +25,14 @@ import java.util.Map;
 
 public class TestListener implements ITestListener {
     TestUtils utils = new TestUtils();
+    private static final Logger logger = LoggerFactory.getLogger(TestListener.class);
 
     public void onTestFailure(ITestResult result) {
         if(result.getThrowable() != null) {
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
             result.getThrowable().printStackTrace(pw);
-            utils.log().error(sw.toString());
+            logger.error(sw.toString());
         }
 
         BaseTest base = new BaseTest();

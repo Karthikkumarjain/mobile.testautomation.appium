@@ -1,8 +1,6 @@
 package com.mobileapp.utils;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -82,8 +80,6 @@ public class TestUtils {
 //	    printWriter.close();
 //	}
 
-    public Logger log() {
-        return LogManager.getLogger(Thread.currentThread().getStackTrace()[2].getClassName());
-    }
+
 
 }

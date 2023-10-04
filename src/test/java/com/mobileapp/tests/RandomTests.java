@@ -22,6 +22,7 @@ public class RandomTests {
     //UIAutomator2 -- https://github.com/appium/appium-uiautomator2-driver/blob/master/docs/android-mobile-gestures.md
     //XCUITest -https://appium.github.io/appium-xcuitest-driver/5.2/execute-methods/#mobile-scroll
 
+
     @Test
     void andoirdlongClick() throws MalformedURLException {
         UiAutomator2Options options = new UiAutomator2Options();
@@ -212,24 +213,25 @@ public class RandomTests {
 
 
     }
-        @Test
-        void iOScrollTest() throws MalformedURLException {
-            XCUITestOptions options = new XCUITestOptions();
-            options.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-            options.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 14 Pro Max");
-            options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
-            options.setCapability(MobileCapabilityType.UDID, "98449E1B-3023-4EE8-A33E-3B2615D44756");
-            options.setCapability(MobileCapabilityType.APP, "/Users/karthik.kumarb/workspace/personal/mobile.testautomation.appium/src/test/resources/app/UIKitCatalog-iphonesimulator.app");
 
-            AppiumDriver driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
+    @Test
+    void iOScrollTest() throws MalformedURLException {
+        XCUITestOptions options = new XCUITestOptions();
+        options.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+        options.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 14 Pro Max");
+        options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
+        options.setCapability(MobileCapabilityType.UDID, "98449E1B-3023-4EE8-A33E-3B2615D44756");
+        options.setCapability(MobileCapabilityType.APP, "/Users/karthik.kumarb/workspace/personal/mobile.testautomation.appium/src/test/resources/app/UIKitCatalog-iphonesimulator.app");
 
-            Map<String, Object> params = new HashMap<>();
-            params.put("direction", "down");
-            //params.put("velocity", 2500);
-            //    params.put("element", ((RemoteWebElement) element).getId());
-            driver.executeScript("mobile: scroll", params);
+        AppiumDriver driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
 
-        }
+        Map<String, Object> params = new HashMap<>();
+        params.put("direction", "down");
+        //params.put("velocity", 2500);
+        //    params.put("element", ((RemoteWebElement) element).getId());
+        driver.executeScript("mobile: scroll", params);
+
+    }
 
 
     @Test
@@ -239,8 +241,8 @@ public class RandomTests {
         options.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 14 Pro Max");
         options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
         options.setCapability(MobileCapabilityType.UDID, "98449E1B-3023-4EE8-A33E-3B2615D44756");
-       // options.setCapability(MobileCapabilityType.APP, "/Users/karthik.kumarb/workspace/personal/mobile.testautomation.appium/src/test/resources/app/UIKitCatalog-iphonesimulator.app");
-        options.setCapability("bundleId","com.apple.Maps");
+        // options.setCapability(MobileCapabilityType.APP, "/Users/karthik.kumarb/workspace/personal/mobile.testautomation.appium/src/test/resources/app/UIKitCatalog-iphonesimulator.app");
+        options.setCapability("bundleId", "com.apple.Maps");
         AppiumDriver driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
 
         Map<String, Object> params = new HashMap<>();
@@ -266,20 +268,19 @@ public class RandomTests {
         options.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 14 Pro Max");
         options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
         options.setCapability(MobileCapabilityType.UDID, "98449E1B-3023-4EE8-A33E-3B2615D44756");
-         options.setCapability(MobileCapabilityType.APP, "/Users/karthik.kumarb/workspace/personal/mobile.testautomation.appium/src/test/resources/app/UIKitCatalog-iphonesimulator.app");
+        options.setCapability(MobileCapabilityType.APP, "/Users/karthik.kumarb/workspace/personal/mobile.testautomation.appium/src/test/resources/app/UIKitCatalog-iphonesimulator.app");
 
         AppiumDriver driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
 
         driver.findElement(AppiumBy.accessibilityId("Steppers")).click();
 
-       WebElement element= driver.findElement(AppiumBy.xpath("(//XCUIElementTypeButton[@name=\"Increment\"])[1]"));
+        WebElement element = driver.findElement(AppiumBy.xpath("(//XCUIElementTypeButton[@name=\"Increment\"])[1]"));
 
         Map<String, Object> params = new HashMap<>();
         params.put("duration", 5);
 
-            params.put("elementId", ((RemoteWebElement) element).getId());
+        params.put("elementId", ((RemoteWebElement) element).getId());
         driver.executeScript("mobile: touchAndHold", params);
-
 
 
     }

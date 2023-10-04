@@ -10,6 +10,8 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.remote.AutomationName;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
@@ -23,8 +25,9 @@ import java.util.HashMap;
 
 public class BaseTest {
 
-    public  AppiumDriver driver;
+    public AppiumDriver driver;
     public static ThreadLocal<AppiumDriver> driverThreadLocalServer = new ThreadLocal<>();
+    private static AppiumDriverLocalService server;
     PropertyFileReader propertyFileReader = new PropertyFileReader();
 
 
@@ -33,21 +36,22 @@ public class BaseTest {
         return driverThreadLocalServer.get();
     }
 
-    public void setDriver(AppiumDriver driver){
-    driverThreadLocalServer.set(driver);
+    public void setDriver(AppiumDriver driver) {
+        driverThreadLocalServer.set(driver);
 
     }
-    public BaseTest(){
 
-        PageFactory.initElements(new AppiumFieldDecorator(getDriver()),this);
+    public BaseTest() {
+
+        PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
     }
 
     @Parameters({"emulator", "platformName", "udid", "deviceName", "systemPort",
             "chromeDriverPort", "wdaLocalPort", "webkitDebugProxyPort"})
     @BeforeTest
-    public void setUp(@Optional("androidOnly")String emulator, String platformName, String udid, String deviceName,
-               @Optional("androidOnly")String systemPort, @Optional("androidOnly")String chromeDriverPort,
-               @Optional("iOSOnly")String wdaLocalPort, @Optional("iOSOnly")String webkitDebugProxyPort) {
+    public void setUp(@Optional("androidOnly") String emulator, String platformName, String udid, String deviceName,
+                      @Optional("androidOnly") String systemPort, @Optional("androidOnly") String chromeDriverPort,
+                      @Optional("iOSOnly") String wdaLocalPort, @Optional("iOSOnly") String webkitDebugProxyPort) {
 
         AppiumDriver driver1 = null;
         switch (platformName) {
@@ -79,10 +83,9 @@ public class BaseTest {
                 options1.setDeviceName(deviceName);
                 options1.setApp(propertyFileReader.getValue("iOSAppLocation"));
 
-                try{
-                    driver1=new IOSDriver(new URL(propertyFileReader.getValue("appiumURL")),options1);
-                }
-                catch(Exception e){
+                try {
+                    driver1 = new IOSDriver(new URL(propertyFileReader.getValue("appiumURL")), options1);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
@@ -107,15 +110,14 @@ public class BaseTest {
                 pcloudyOptions.put("pCloudy_EnableDeviceLogs", "false");
                 pcloudyOptions.put("appiumVersion", "2.0.0");
                 capabilities.setCapability("pcloudy:options", pcloudyOptions);
-             try {
-                    driver1= new AndroidDriver(new URL("https://device.pcloudy.com/appiumcloud/wd/hub"), capabilities);
-            }
-                catch(Exception e){
+                try {
+                    driver1 = new AndroidDriver(new URL("https://device.pcloudy.com/appiumcloud/wd/hub"), capabilities);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
-                 default:
-                throw new RuntimeException("Hey enter a proper value.The entered value is invalid"+platformName);
+            default:
+                throw new RuntimeException("Hey enter a proper value.The entered value is invalid" + platformName);
 
         }
         setDriver(driver1);
@@ -123,37 +125,35 @@ public class BaseTest {
 
     }
 
+    public void waitForVisibilityOfElement(WebElement e) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(TestUtils.WAIT));
+        wait.until(ExpectedConditions.visibilityOf(e));
 
-    public void waitForVisibilityOfElement(WebElement e){
-    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(TestUtils.WAIT));
-    wait.until(ExpectedConditions.visibilityOf(e));
+    }
 
-}
-
-public void clickOnElement(WebElement e){
+    public void clickOnElement(WebElement e) {
         waitForVisibilityOfElement(e);
         e.click();
 
-}
+    }
 
-    public void sendKeys(WebElement e,String str){
+    public void sendKeys(WebElement e, String str) {
         waitForVisibilityOfElement(e);
         e.sendKeys(str);
 
     }
 
-    void clearText(WebElement e){
+    void clearText(WebElement e) {
         waitForVisibilityOfElement(e);
         e.clear();
 
     }
 
-    public String getAttribute(WebElement e){
+    public String getAttribute(WebElement e) {
         waitForVisibilityOfElement(e);
         String text = e.getText();
         return text;
 
     }
-
 
 }
